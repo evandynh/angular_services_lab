@@ -2,10 +2,27 @@
 <html ng-app='gumApp'>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Gums To Chew</title>
   </head>
-  <body>
- {{1 + 1}}
+  <body ng-controller="GumController as gumCtrl">
+    <form ng-submit="gumCtrl.add()">
+      <input type="text" ng-model="gumCtrl.newGum.name" placeholder="Add Gum">
+      <input type="text" ng-model="gumCtrl.newGum.duration" placeholder="Add Duration">
+      <label for="gumCtrl.newGum.organic">Organic?</label>
+      <input type="checkbox" ng-model="gumCtrl.newGum.organic" placeholder="Add Organic? (T/F?)">
+      <input type="text" ng-model="gumCtrl.newGum.flavor" placeholder="Add Flavor">
+      <input type="submit">
+    </form>
+    <ul>
+      <li ng-repeat="gum in gumCtrl.all">
+        <p>Name: {{gum.name}}</p>
+        <p>Lasts for {{gum.duration}} minutes.</p>
+        <p>Organic? {{gum.organic}}</p>
+        <p>Tastes like: {{gum.flavor}}</p>
+      </li>
+    </ul>
+
+
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>

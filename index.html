@@ -13,14 +13,30 @@
       <input type="text" ng-model="gumCtrl.newGum.flavor" placeholder="Add Flavor">
       <input type="submit">
     </form>
+  <div class="unchewed">
+    <h2>Gums to Chew</h2>
     <ul>
-      <li ng-repeat="gum in gumCtrl.all">
+      <li ng-repeat="gum in gumCtrl.all" ng-if="!gum.chewed">
+        <p>Name: {{gum.name}}</p>
+        <p>Lasts for {{gum.duration}} minutes.</p>
+        <p>Organic? {{gum.organic}}</p>
+        <p>Tastes like: {{gum.flavor}}</p>
+        <p>Chewed?<input type="checkbox" ng-model="gum.chewed"></p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="chewed">
+    <h2>Gums Chewed</h2>
+    <ul>
+      <li ng-repeat="gum in gumCtrl.all" ng-if="gum.chewed">
         <p>Name: {{gum.name}}</p>
         <p>Lasts for {{gum.duration}} minutes.</p>
         <p>Organic? {{gum.organic}}</p>
         <p>Tastes like: {{gum.flavor}}</p>
       </li>
     </ul>
+  </div>
 
 
 
